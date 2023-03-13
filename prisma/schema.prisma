@@ -27,7 +27,7 @@ type Images {
 }
 
 enum Status {
-  NEW
-  REFUBISH
-  SECONDHAND
+  New
+  Used
+  Refurbish
 }
