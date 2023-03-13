@@ -21,6 +21,6 @@ app.use(cors());
 // Routes
 app.use("/api/v1/item", ItemRouter);
 
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 9000;
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));

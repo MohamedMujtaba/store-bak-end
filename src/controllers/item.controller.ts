@@ -53,12 +53,10 @@ export const getItems = async (req: ItemInputReq, res: Response) => {
     });
     res.status(200).json({ success: true, items });
   } catch (error) {
-    res
-      .status(400)
-      .json({
-        success: false,
-        message: "Something went wrong 😴",
-        error: error,
-      });
+    res.status(400).json({
+      success: false,
+      message: "Something went wrong 😴",
+      error: error,
+    });
   }
 };
