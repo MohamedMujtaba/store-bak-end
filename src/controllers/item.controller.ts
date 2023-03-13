@@ -8,19 +8,22 @@ interface ItemReq extends Request {
 }
 
 export const createItem = async (req: ItemReq, res: Response) => {
-  const { title, compony, price, status, images } = req.body;
+  const { title, compony, price, status, images, hot, active } = req.body;
 
   try {
     ///@ts-ignore  FIXME:
     const i: any = await uploadImg(res, images);
     const item = await prisma.item.create({
-      data: { title, compony, price, status, images: i },
+      data: { title, compony, price, status, images: i, hot, active },
     });
     res.status(200).json({ success: true, item });
   } catch (error) {
-    res
-      .status(400)
-      .json({ success: false, message: "Something went wrong 😴" });
+    console.log(error);
+
+    res.status(400).json({
+      success: false,
+      message: "Something went wrong 😴",
+    });
   }
 };
 
@@ -52,6 +55,10 @@ export const getItems = async (req: ItemInputReq, res: Response) => {
   } catch (error) {
     res
       .status(400)
-      .json({ success: false, message: "Something went wrong 😴" });
+      .json({
+        success: false,
+        message: "Something went wrong 😴",
+        error: error,
+      });
   }
 };

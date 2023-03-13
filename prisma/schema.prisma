@@ -11,14 +11,23 @@ datasource db {
 }
 
 model Item {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  title   String
-  price   Int
-  compony String
-  status  Status
-  active  Boolean  @default(true)
-  hot     Boolean  @default(false)
-  images  Images[]
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  curruntPrice Int
+  oldPrice     Int?
+  compony      String
+  status       Status
+  active       Boolean  @default(true)
+  hot          Boolean  @default(false)
+  images       Images[]
+  memory       String?
+  ram          String?
+  dec          String?
+  color        String?
+  sim          Int?
+  battery      Int?
+  processor    String?
+  screen       String?
 }
 
 type Images {
@@ -27,7 +36,7 @@ type Images {
 }
 
 enum Status {
-  NEW
-  REFUBISH
-  SECONDHAND
+  New
+  Refurbish
+  Used
 }
