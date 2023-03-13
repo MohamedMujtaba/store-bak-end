@@ -13,19 +13,23 @@ exports.getItems = exports.createItem = void 0;
 const prisma_1 = require("../utils/prisma");
 const uploadImg_1 = require("../utils/uploadImg");
 const createItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title, compony, price, status, images } = req.body;
+    const { title, compony, price, status, images, hot, active } = req.body;
     try {
         ///@ts-ignore  FIXME:
         const i = yield (0, uploadImg_1.uploadImg)(res, images);
         const item = yield prisma_1.prisma.item.create({
-            data: { title, compony, price, status, images: i },
+            data: { title, compony, price, status, hot, active, images: i },
         });
         res.status(200).json({ success: true, item });
     }
     catch (error) {
         res
             .status(400)
-            .json({ success: false, message: "Something went wrong 😴" });
+            .json({
+            success: false,
+            message: "Something went wrong 😴",
+            error: error,
+        });
     }
 });
 exports.createItem = createItem;

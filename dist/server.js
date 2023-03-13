@@ -19,5 +19,5 @@ app.use((0, helmet_1.default)());
 app.use((0, cors_1.default)());
 // Routes
 app.use("/api/v1/item", item_router_1.default);
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 9000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
